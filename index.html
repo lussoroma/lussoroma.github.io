@@ -13,14 +13,88 @@
   <meta property="og:url" content="https://lussoroma.github.io/">
   <meta property="og:image" content="https://lussoroma.github.io/roma-dopo-il-tramonto/assets/roma-blue-hour-rooftop.webp">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#121719">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Lusso Roma",
-    "url": "https://lussoroma.github.io/",
-    "inLanguage": "it-IT",
-    "description": "Taccuino editoriale dedicato alla Roma serale, ai suoi quartieri e alla cultura della discrezione."
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://lussoroma.github.io/#organization",
+        "name": "Lusso Roma",
+        "url": "https://lussoroma.github.io/",
+        "logo": "https://lussoroma.github.io/favicon.svg",
+        "description": "Progetto editoriale indipendente dedicato alla Roma serale, ai suoi quartieri e alla cultura della discrezione.",
+        "areaServed": {
+          "@type": "City",
+          "name": "Roma"
+        },
+        "knowsLanguage": "it-IT",
+        "sameAs": [
+          "https://github.com/lussoroma",
+          "https://www.twitch.tv/lussoroma/"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://lussoroma.github.io/#website",
+        "name": "Lusso Roma",
+        "url": "https://lussoroma.github.io/",
+        "inLanguage": "it-IT",
+        "publisher": {
+          "@id": "https://lussoroma.github.io/#organization"
+        },
+        "description": "Taccuino editoriale dedicato alla Roma serale, ai suoi quartieri e alla cultura della discrezione."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://lussoroma.github.io/#faq",
+        "inLanguage": "it-IT",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Come si sceglie la zona giusta per un incontro serale a Roma?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Conviene partire dal tono desiderato e dal percorso completo, non soltanto dal nome di un locale. Monti mantiene la serata compatta, Prati offre un ritmo più composto, mentre Trastevere richiede maggiore margine per affollamento e spostamenti."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Che cosa significa discrezione in un appuntamento tra adulti?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Significa tutelare la privacy reciproca, comunicare con chiarezza, rispettare consenso e limiti e non esporre dettagli personali senza necessità. La discrezione non sostituisce la trasparenza: la rende più misurata."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quali elementi valutare prima di confermare un profilo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "È utile controllare coerenza e aggiornamento delle informazioni, condizioni dichiarate, zona, disponibilità e qualità della comunicazione. Se i dettagli essenziali restano ambigui, è preferibile non accelerare la decisione."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "È meglio definire prima luogo e orario?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sì. Un punto riconoscibile, un orario realistico e un rientro già considerato riducono messaggi, attese e cambi di programma. La serata conserva così più naturalezza."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Come evitare che gli spostamenti rovinino la serata?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "È meglio restare in un perimetro coerente, verificare ZTL e trasporto pubblico nel giorno stesso e tenere una seconda opzione nelle vicinanze. Attraversare Roma più volte raramente migliora il ritmo."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
   <style>
@@ -148,6 +222,7 @@
     .hero-media {
       z-index: -2;
       object-fit: cover;
+      object-position: center 48%;
     }
 
     .hero-shade {
@@ -293,7 +368,7 @@
 
     .image-feature {
       display: grid;
-      grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr);
+      grid-template-columns: minmax(0, 1.12fr) minmax(420px, 0.88fr);
       min-height: 590px;
       background: var(--green);
       color: #fff;
@@ -308,13 +383,19 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 56%;
     }
 
     .image-feature-copy {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 72px max(32px, calc((100vw - 1140px) / 2));
+      padding: 72px 64px;
+    }
+
+    .image-feature-copy > * {
+      width: 100%;
+      max-width: 470px;
     }
 
     .image-feature-copy .section-label {
@@ -436,10 +517,18 @@
       text-decoration: none;
     }
 
-    .reading-link img {
+    .reading-media {
+      display: block;
       width: 230px;
       aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+
+    .reading-media img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      object-position: center;
     }
 
     .reading-link h3 {
@@ -486,6 +575,120 @@
       font-size: 14px;
     }
 
+    .profile-band {
+      padding: 72px 0;
+      border-top: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+      gap: 80px;
+      align-items: start;
+    }
+
+    .profile-grid > div > p:last-child {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .profile-facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 34px;
+      margin: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .profile-fact {
+      min-height: 112px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .profile-fact dt {
+      margin-bottom: 7px;
+      color: var(--wine);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .profile-fact dd {
+      margin: 0;
+      color: #303635;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    .profile-fact a {
+      color: inherit;
+    }
+
+    .faq-band {
+      padding: 86px 0;
+      background: var(--soft);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+      gap: 82px;
+      align-items: start;
+    }
+
+    .faq-intro {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .faq-list {
+      border-top: 1px solid #bac3be;
+    }
+
+    .faq-list details {
+      border-bottom: 1px solid #bac3be;
+    }
+
+    .faq-list summary {
+      position: relative;
+      padding: 24px 48px 24px 0;
+      cursor: pointer;
+      list-style: none;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 23px;
+      line-height: 1.35;
+    }
+
+    .faq-list summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-list summary::after {
+      content: "+";
+      position: absolute;
+      top: 22px;
+      right: 4px;
+      color: var(--wine);
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      font-size: 24px;
+    }
+
+    .faq-list details[open] summary::after {
+      content: "−";
+    }
+
+    .faq-answer {
+      max-width: 720px;
+      margin: -4px 0 24px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
     footer {
       padding: 28px 0;
       background: var(--night);
@@ -515,7 +718,9 @@
 
       .lead-grid,
       .rhythm-head,
-      .practical-grid {
+      .practical-grid,
+      .profile-grid,
+      .faq-grid {
         grid-template-columns: 1fr;
         gap: 34px;
       }
@@ -535,11 +740,12 @@
       }
 
       .image-feature figure {
-        min-height: 430px;
+        min-height: 0;
+        aspect-ratio: 16 / 10;
       }
 
       .image-feature-copy {
-        padding: 64px 24px;
+        padding: 64px 32px;
       }
 
       .rhythm-step,
@@ -557,6 +763,10 @@
 
       .reading-link {
         grid-template-columns: 190px minmax(0, 1fr) auto;
+      }
+
+      .reading-media {
+        width: 190px;
       }
     }
 
@@ -580,6 +790,10 @@
       .hero {
         min-height: 670px;
         height: calc(100svh - 18px);
+      }
+
+      .hero-media {
+        object-position: 57% center;
       }
 
       .hero-content {
@@ -616,7 +830,12 @@
       }
 
       .image-feature figure {
-        min-height: 350px;
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+      }
+
+      .image-feature img {
+        object-position: center 58%;
       }
 
       .adult-note {
@@ -636,7 +855,7 @@
         gap: 16px;
       }
 
-      .reading-link img {
+      .reading-media {
         width: 100%;
       }
 
@@ -647,6 +866,22 @@
       .sources-wrap {
         grid-template-columns: 1fr;
         gap: 20px;
+      }
+
+      .profile-facts {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-fact {
+        min-height: auto;
+      }
+
+      .faq-band {
+        padding: 66px 0;
+      }
+
+      .faq-list summary {
+        font-size: 21px;
       }
 
       .footer-wrap {
@@ -795,7 +1030,7 @@
         </div>
         <div class="reading-list">
           <a class="reading-link" href="https://lussoroma.github.io/roma-dopo-il-tramonto/">
-            <img src="https://lussoroma.github.io/roma-dopo-il-tramonto/assets/roma-blue-hour-rooftop.webp" alt="Panorama serale sui tetti di Roma" width="1672" height="941" loading="lazy">
+            <span class="reading-media"><img src="https://lussoroma.github.io/roma-dopo-il-tramonto/assets/roma-blue-hour-rooftop.webp" alt="Panorama serale sui tetti di Roma" width="1672" height="941" loading="lazy"></span>
             <div>
               <p class="chapter-number">Taccuino serale</p>
               <h3>Roma dopo il tramonto</h3>
@@ -804,7 +1039,7 @@
             <span class="reading-arrow" aria-hidden="true">→</span>
           </a>
           <a class="reading-link" href="https://lussoroma.github.io/roma-dopo-il-tramonto/roma-con-misura/">
-            <img src="https://lussoroma.github.io/roma-dopo-il-tramonto/assets/roma-terrazza-san-pietro.webp" alt="Terrazza romana illuminata con vista sulla Basilica di San Pietro" width="1536" height="1024" loading="lazy">
+            <span class="reading-media"><img src="https://lussoroma.github.io/roma-dopo-il-tramonto/assets/roma-terrazza-san-pietro.webp" alt="Terrazza romana illuminata con vista sulla Basilica di San Pietro" width="1536" height="1024" loading="lazy"></span>
             <div>
               <p class="chapter-number">Guida editoriale</p>
               <h3>Roma con misura</h3>
@@ -812,6 +1047,74 @@
             </div>
             <span class="reading-arrow" aria-hidden="true">→</span>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile-band" aria-labelledby="profilo-title">
+      <div class="shell profile-grid">
+        <div>
+          <p class="section-label">Scheda editoriale</p>
+          <h2 id="profilo-title">Lusso Roma, in breve</h2>
+          <p>Un progetto digitale indipendente che osserva la capitale di sera con un taglio adulto, locale e misurato. Nessuna classifica automatica: contesto, fonti e utilità prima della promozione.</p>
+        </div>
+        <dl class="profile-facts">
+          <div class="profile-fact">
+            <dt>Nome</dt>
+            <dd>Lusso Roma</dd>
+          </div>
+          <div class="profile-fact">
+            <dt>Area editoriale</dt>
+            <dd>Roma, Italia</dd>
+          </div>
+          <div class="profile-fact">
+            <dt>Lingua</dt>
+            <dd>Italiano</dd>
+          </div>
+          <div class="profile-fact">
+            <dt>Temi</dt>
+            <dd>Quartieri, sera, incontri adulti, discrezione</dd>
+          </div>
+          <div class="profile-fact">
+            <dt>Profilo</dt>
+            <dd><a href="https://github.com/lussoroma">GitHub / lussoroma</a></dd>
+          </div>
+          <div class="profile-fact">
+            <dt>Canale</dt>
+            <dd><a href="https://www.twitch.tv/lussoroma/">Twitch / lussoroma</a></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="faq-band" aria-labelledby="faq-title">
+      <div class="shell faq-grid">
+        <div>
+          <p class="section-label">Domande frequenti</p>
+          <h2 id="faq-title">Prima di fissare la serata</h2>
+          <p class="faq-intro">Risposte concise su quartieri, profili, privacy e spostamenti. Il tono resta discreto, ma i dettagli importanti non vengono lasciati impliciti.</p>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Come si sceglie la zona giusta per un incontro serale a Roma?</summary>
+            <p class="faq-answer">Conviene partire dal tono desiderato e dal percorso completo, non soltanto dal nome di un locale. Monti mantiene la serata compatta, Prati offre un ritmo più composto, mentre Trastevere richiede maggiore margine per affollamento e spostamenti.</p>
+          </details>
+          <details>
+            <summary>Che cosa significa discrezione in un appuntamento tra adulti?</summary>
+            <p class="faq-answer">Significa tutelare la privacy reciproca, comunicare con chiarezza, rispettare consenso e limiti e non esporre dettagli personali senza necessità. La discrezione non sostituisce la trasparenza: la rende più misurata.</p>
+          </details>
+          <details>
+            <summary>Quali elementi valutare prima di confermare un profilo?</summary>
+            <p class="faq-answer">È utile controllare coerenza e aggiornamento delle informazioni, condizioni dichiarate, zona, disponibilità e qualità della comunicazione. Se i dettagli essenziali restano ambigui, è preferibile non accelerare la decisione.</p>
+          </details>
+          <details>
+            <summary>È meglio definire prima luogo e orario?</summary>
+            <p class="faq-answer">Sì. Un punto riconoscibile, un orario realistico e un rientro già considerato riducono messaggi, attese e cambi di programma. La serata conserva così più naturalezza.</p>
+          </details>
+          <details>
+            <summary>Come evitare che gli spostamenti rovinino la serata?</summary>
+            <p class="faq-answer">È meglio restare in un perimetro coerente, verificare ZTL e trasporto pubblico nel giorno stesso e tenere una seconda opzione nelle vicinanze. Attraversare Roma più volte raramente migliora il ritmo.</p>
+          </details>
         </div>
       </div>
     </section>
