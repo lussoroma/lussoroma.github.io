@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+  <title id="title">Lusso Roma</title>
+  <rect width="96" height="96" rx="18" fill="#121719"/>
+  <circle cx="48" cy="48" r="34" fill="none" stroke="#d7b36a" stroke-width="3"/>
+  <text x="48" y="57" fill="#d7b36a" font-family="Georgia, 'Times New Roman', serif" font-size="27" text-anchor="middle">LR</text>
+</svg>
