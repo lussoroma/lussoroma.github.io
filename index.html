@@ -521,6 +521,7 @@
       display: block;
       width: 230px;
       aspect-ratio: 16 / 9;
+      border-radius: 8px;
       overflow: hidden;
     }
 
@@ -711,8 +712,7 @@
         gap: 15px;
       }
 
-      .site-nav a:nth-child(2),
-      .site-nav a:nth-child(3) {
+      .site-nav .nav-section {
         display: none;
       }
 
@@ -899,10 +899,10 @@
         <span>Lusso Roma</span>
       </a>
       <nav class="site-nav" aria-label="Navigazione principale">
-        <a href="#editoriale">Editoriale</a>
-        <a href="#quartieri">Quartieri</a>
-        <a href="#metodo">Metodo</a>
-        <a href="#letture">Letture</a>
+        <a class="nav-section" href="#editoriale">Editoriale</a>
+        <a class="nav-section" href="#quartieri">Quartieri</a>
+        <a href="https://lussoroma.github.io/roma-dopo-il-tramonto/">Dopo il tramonto</a>
+        <a href="https://lussoroma.github.io/roma-con-misura/">Roma con misura</a>
       </nav>
     </div>
   </header>
@@ -1038,7 +1038,7 @@
             </div>
             <span class="reading-arrow" aria-hidden="true">→</span>
           </a>
-          <a class="reading-link" href="https://lussoroma.github.io/roma-dopo-il-tramonto/roma-con-misura/">
+          <a class="reading-link" href="https://lussoroma.github.io/roma-con-misura/">
             <span class="reading-media"><img src="https://lussoroma.github.io/roma-dopo-il-tramonto/assets/roma-terrazza-san-pietro.webp" alt="Terrazza romana illuminata con vista sulla Basilica di San Pietro" width="1536" height="1024" loading="lazy"></span>
             <div>
               <p class="chapter-number">Guida editoriale</p>
